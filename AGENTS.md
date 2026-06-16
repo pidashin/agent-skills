@@ -37,6 +37,7 @@ Load the appropriate skill for the current phase:
 | Phase | Skill |
 |-------|-------|
 | Always | [using-skills](./skills/using-skills/SKILL.md) |
+| Initializing a project | [init](./skills/init/SKILL.md) |
 | Defining what to build | [spec-driven-development](./skills/spec-driven-development/SKILL.md) |
 | Breaking work into tasks | [planning-and-task-breakdown](./skills/planning-and-task-breakdown/SKILL.md) |
 | Writing code with external dependencies | [source-grounded-development](./skills/source-grounded-development/SKILL.md) |

@@ -1,6 +1,8 @@
 # Using agent-skills with Antigravity CLI
 
-Installing this repository as a native plugin in the Antigravity CLI (`agy`) gives the agent access to structured workflows, personas, and lifecycle gates directly within its execution environment.
+Installing this repository as a native plugin in the Antigravity CLI (`agy`)
+gives the agent access to structured workflows, slash commands, and lifecycle
+gates directly within its execution environment.
 
 ---
 
@@ -39,7 +41,7 @@ Antigravity natively supports the `agent-skills` pattern through **progressive d
 ### 1. Onboarding Phase (Initialization)
 Before adopting the skills in a new repository, run the onboarding command:
 ```bash
-agy init --skills
+/init
 ```
 This command helps configure project-specific settings, including:
 - Establishing the **designated domain knowledge store** (e.g., creating a `KNOWLEDGE.md` at the project root or designating a folder).
@@ -48,7 +50,7 @@ This command helps configure project-specific settings, including:
 ### 2. Startup Verification
 At the start of every session:
 1. Antigravity reads `AGENTS.md` at the root of the workspace.
-2. It automatically loads the meta-skill (`using-skills` defined in `SKILL.md`) to establish the **five non-negotiables**.
+2. It loads the meta-skill (`skills/using-skills/SKILL.md`) to establish the **five non-negotiables**.
 3. The agent runs the **Session Start Checklist** to verify scope boundaries and confirm verification criteria before writing any code.
 
 ### 3. Progressive Skill Activation
@@ -72,6 +74,7 @@ The plugin registers the lifecycle slash commands directly in the Antigravity sh
 
 | Command | Lifecycle Phase | Activated Skill |
 |---------|-----------------|-----------------|
+| `/init` | Onboarding | `init` |
 | `/spec` | Spec | `spec-driven-development` |
 | `/planning` | Plan | `planning-and-task-breakdown` |
 | `/build` | Build | `source-grounded-development` |

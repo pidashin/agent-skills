@@ -1,0 +1,15 @@
+---
+description: Initialize a project for agent-skills usage and choose a domain knowledge store
+---
+
+Invoke the agent-skills:init skill.
+
+Inspect the current project for existing agent instruction files and knowledge
+stores. Ask the user whether domain knowledge should be stored locally, remotely,
+through another custom workflow, or skipped for now. Do not choose the location
+silently.
+
+After the user decides, create or update only the necessary project instruction
+files and knowledge-store files. Preserve existing instructions and report the
+created or updated files, the selected domain knowledge location, access status,
+and any follow-up needed for MCP or connector setup.

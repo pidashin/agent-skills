@@ -1,0 +1,12 @@
+{
+  "name": "agent-skills",
+  "description": "Production-grade engineering skills for AI coding agents.",
+  "author": {
+    "name": "pidashin"
+  },
+  "homepage": "https://github.com/pidashin/agent-skills",
+  "repository": "https://github.com/pidashin/agent-skills",
+  "license": "MIT",
+  "commands": "./.claude/commands",
+  "skills": "./skills"
+}

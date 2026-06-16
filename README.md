@@ -16,12 +16,13 @@ These skills bolt the senior-engineer scaffolding back on. They are not referenc
 
 ## Skills
 
-6 skills organised around the development lifecycle.
+7 skills organised around onboarding and the development lifecycle.
 
-### Meta
+### Meta and onboarding
 | Skill | Phase | What it does |
 |-------|-------|--------------|
 | [using-skills](./skills/using-skills/SKILL.md) | Always | Routes to the right skill; enforces five non-negotiables for every session |
+| [init](./skills/init/SKILL.md) | Onboarding | Sets up project instruction files and the designated domain knowledge store |
 
 ### Lifecycle
 | Skill | Phase | What it does |
@@ -31,6 +32,29 @@ These skills bolt the senior-engineer scaffolding back on. They are not referenc
 | [source-grounded-development](./skills/source-grounded-development/SKILL.md) | Build | Verify every API, method, and library feature in official docs before using it |
 | [retrospective-and-knowledge-capture](./skills/retrospective-and-knowledge-capture/SKILL.md) | Retro | Document design patterns, rationales, and codebase gotchas |
 | [git-and-commit-discipline](./skills/git-and-commit-discipline/SKILL.md) | Ship | Atomic commits, meaningful messages, reviewable PRs |
+
+---
+
+## Commands
+
+Slash commands are thin entrypoints that invoke the matching skill. They live
+outside `skills/` so each AI tool can use its own command format while sharing
+the same skill workflow.
+
+| Command | Purpose | Skill |
+|---------|---------|-------|
+| `/init` | Set up project instruction files and choose a domain knowledge store | [init](./skills/init/SKILL.md) |
+| `/spec` | Define acceptance criteria and scope before code | [spec-driven-development](./skills/spec-driven-development/SKILL.md) |
+| `/planning` | Break a confirmed spec into verifiable tasks | [planning-and-task-breakdown](./skills/planning-and-task-breakdown/SKILL.md) |
+| `/build` | Verify external APIs and dependencies before implementation | [source-grounded-development](./skills/source-grounded-development/SKILL.md) |
+| `/retro` | Capture design decisions and codebase gotchas | [retrospective-and-knowledge-capture](./skills/retrospective-and-knowledge-capture/SKILL.md) |
+| `/ship` | Prepare atomic commits and reviewable shipping notes | [git-and-commit-discipline](./skills/git-and-commit-discipline/SKILL.md) |
+
+Tool-specific command locations:
+
+- Claude Code: [`.claude/commands/`](./.claude/commands/)
+- Gemini CLI: [`.gemini/commands/`](./.gemini/commands/)
+- Antigravity CLI: [`commands/`](./commands/)
 
 ---
 
@@ -66,20 +90,51 @@ For detailed integration guides and configuration steps, see the documentation:
 
 ### Claude Code
 
-Drop the `skills/` directory into your project or reference it in your `CLAUDE.md`:
+Install this repository as a Claude plugin, or drop the `skills/` directory into
+your project and reference it in your `CLAUDE.md`:
 
 ```
 Read and follow the skills in ./skills/ for all coding tasks.
 Start with ./skills/using-skills/SKILL.md.
 ```
 
+The Claude plugin manifest is [`.claude-plugin/plugin.json`](./.claude-plugin/plugin.json).
+
+### Gemini CLI
+
+Install or reference the [`skills/`](./skills/) directory, and use
+[`.gemini/commands/`](./.gemini/commands/) for Gemini command entrypoints.
+
 ### Cursor
 
 Copy skills into `.cursor/rules/` or reference them in your project rules.
 
+### Antigravity CLI
+
+Install this repository as a plugin. Antigravity command entrypoints live in
+[`commands/`](./commands/).
+
 ### Any agent
 
 These are plain Markdown files. Any agent that accepts system prompts or instruction files can use them. Point the agent at `skills/using-skills/SKILL.md` to start.
+
+---
+
+## Project Structure
+
+```text
+agent-skills/
+├── skills/                 # Shared skill workflows
+│   ├── using-skills/       # Meta skill
+│   ├── init/               # Project onboarding
+│   └── ...
+├── .claude/commands/       # Claude Code slash commands
+├── .gemini/commands/       # Gemini CLI slash commands
+├── commands/               # Antigravity CLI slash commands
+├── .claude-plugin/         # Claude plugin manifest
+├── plugin.json             # Antigravity plugin manifest
+└── docs/                   # Setup guides
+```
 
 ---
 
