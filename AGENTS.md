@@ -40,4 +40,5 @@ Load the appropriate skill for the current phase:
 | Defining what to build | [spec-driven-development](./skills/spec-driven-development/SKILL.md) |
 | Breaking work into tasks | [planning-and-task-breakdown](./skills/planning-and-task-breakdown/SKILL.md) |
 | Writing code with external dependencies | [source-grounded-development](./skills/source-grounded-development/SKILL.md) |
+| Capturing design decisions and retrospecting | [retrospective-and-knowledge-capture](./skills/retrospective-and-knowledge-capture/SKILL.md) |
 | Committing or opening a PR | [git-and-commit-discipline](./skills/git-and-commit-discipline/SKILL.md) |

@@ -63,24 +63,25 @@ Map the current task to the right skill. A task may activate more than one skill
 | Defining what to build; writing requirements or acceptance criteria | `spec-driven-development` |
 | Breaking work into tasks; estimating scope; sequencing | `planning-and-task-breakdown` |
 | Writing code; using a library, API, or framework feature | `source-grounded-development` |
+| Capturing design decisions, trade-offs, and learnings after development | `retrospective-and-knowledge-capture` |
 | Committing code; writing commit messages; creating PRs | `git-and-commit-discipline` |
 
 ### Phase order for a new feature
 
 ```
-spec → plan → build (source-grounded) → ship (git)
+spec → plan → build (source-grounded) → retro → ship (git)
 ```
 
 ### Phase order for a bug fix
 
 ```
-build (source-grounded) → ship (git)
+build (source-grounded) → retro → ship (git)
 ```
 
 ### Phase order for a refactor
 
 ```
-spec (what changes, what must not change) → plan → build → ship (git)
+spec (what changes, what must not change) → plan → build → retro → ship (git)
 ```
 
 ---

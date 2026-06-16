@@ -16,7 +16,7 @@ These skills bolt the senior-engineer scaffolding back on. They are not referenc
 
 ## Skills
 
-7 skills organised around the development lifecycle.
+6 skills organised around the development lifecycle.
 
 ### Meta
 | Skill | Phase | What it does |
@@ -29,6 +29,7 @@ These skills bolt the senior-engineer scaffolding back on. They are not referenc
 | [spec-driven-development](./skills/spec-driven-development/SKILL.md) | Spec | Write acceptance criteria before writing any code |
 | [planning-and-task-breakdown](./skills/planning-and-task-breakdown/SKILL.md) | Plan | Decompose the spec into atomic, verifiable tasks with explicit scope boundaries |
 | [source-grounded-development](./skills/source-grounded-development/SKILL.md) | Build | Verify every API, method, and library feature in official docs before using it |
+| [retrospective-and-knowledge-capture](./skills/retrospective-and-knowledge-capture/SKILL.md) | Retro | Document design patterns, rationales, and codebase gotchas |
 | [git-and-commit-discipline](./skills/git-and-commit-discipline/SKILL.md) | Ship | Atomic commits, meaningful messages, reviewable PRs |
 
 ---
@@ -58,6 +59,10 @@ These skills follow the principles from Addy Osmani's agent-skills project:
 ---
 
 ## Usage
+
+For detailed integration guides and configuration steps, see the documentation:
+- [Getting Started](./docs/getting-started.md)
+- [Antigravity Setup](./docs/antigravity-setup.md)
 
 ### Claude Code
 
