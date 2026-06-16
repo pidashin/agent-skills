@@ -49,7 +49,7 @@ If you have staged changes that belong to more than one logical change, unstage 
 Use the conventional commits format:
 
 ```
-<type>(<optional scope>): <short summary in present tense>
+<type>: <short summary in present tense>
 
 <optional body: why this change was made, not what — the diff shows the what>
 
@@ -76,7 +76,7 @@ Use the conventional commits format:
 - Wrap at 72 characters
 
 ```
-feat(auth): add password reset via email link
+feat: add password reset via email link
 
 Implements the reset flow described in the spec. Token is stored in
 reset_tokens table with a 1-hour expiry. Single-use enforcement is
