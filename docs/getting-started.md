@@ -15,20 +15,30 @@ development.
 The skills are organized around the software development lifecycle:
 
 1. **Meta (`using-skills`)** — Routes the agent to the correct skill and enforces five non-negotiable rules for every session.
-2. **Init (`init`)** — One-time setup: level 1 rules files, domain knowledge store location, and GitHub CLI readiness.
-3. **Context (`context-engineering`)** — Ongoing maintenance: keep rules files and project maps current; pack selective context per session.
-4. **Spec (`spec-driven-development`)** — Defines acceptance criteria and scope boundaries before any code is written.
-5. **Plan (`planning-and-task-breakdown`)** — Decomposes the spec into small, verifiable, and ordered tasks.
-6. **Build** — Load `source-grounded-development`, `incremental-implementation`, and/or `test-driven-development` only when their triggers match the current slice (see `using-skills`).
-7. **Review** — Load `code-review-and-quality` before merge; add `code-simplification` only when review findings require clarity work.
-8. **Retro (`retrospective-and-knowledge-capture`)** — Records design patterns, trade-offs, and gotchas as domain knowledge.
-9. **Ship (`git-and-commit-discipline`)** — Enforces atomic commits, conventional commit messages, and reviewable PRs.
+2. **Orchestrator (`dev-orchestrator`, alias dev-flow)** — Multi-phase controller: isolated subagents, resumable task index and session state, maker/checker separation. Use for non-trivial work; use `using-skills` for single-step tasks.
+3. **Init (`init`)** — One-time setup: level 1 rules files, domain knowledge store location, and GitHub CLI readiness.
+4. **Context (`context-engineering`)** — Ongoing maintenance: keep rules files and project maps current; pack selective context per session.
+5. **Spec (`spec-driven-development`)** — Defines acceptance criteria and scope boundaries before any code is written.
+6. **Plan (`planning-and-task-breakdown`)** — Decomposes the spec into small, verifiable, and ordered tasks.
+7. **Build** — Load `source-grounded-development`, `incremental-implementation`, and/or `test-driven-development` only when their triggers match the current slice (see `using-skills`).
+8. **Review** — Load `code-review-and-quality` before merge; add `code-simplification` only when review findings require clarity work.
+9. **Retro (`retrospective-and-knowledge-capture`)** — Records design patterns, trade-offs, and gotchas as domain knowledge.
+10. **Ship (`git-and-commit-discipline`)** — Enforces atomic commits, conventional commit messages, and reviewable PRs.
+
+Orchestrator state paths are tool-specific. See [dev-orchestrator-paths.md](./dev-orchestrator-paths.md).
 
 ---
 
 ## Standard Development Lifecycle
 
-When working on a feature or a complex refactor, the agent will transition through the following phases:
+When working on a feature or a complex refactor, use `dev-orchestrator` (or `/dev-flow`).
+The orchestrator advances through:
+
+```
+spec → plan → build → human-review → review → retro → ship
+```
+
+For single-step work, `using-skills` routes directly without orchestrator state:
 
 ```
 spec → plan → build* → review* → retro → ship (git)
@@ -105,7 +115,20 @@ Install or reference the `skills/` directory, and use `.gemini/commands/` for
 Gemini command entrypoints.
 
 #### Cursor
-Copy the skills directory (or specific rules) into `.cursor/rules/` or reference them in your `.cursorrules` configuration file to enforce compliance.
+Install skills for Cursor with `gh skill` when available:
+
+```bash
+gh skill install pidashin/agent-skills --all --agent cursor
+```
+
+Use `--scope user` for a global install (`~/.cursor/skills/`) or `--scope project`
+to commit skills under `.cursor/skills/` in the repo.
+
+Add `AGENTS.md` at the project root (or a short always-on rule in
+`.cursor/rules/*.mdc`) so the agent loads `using-skills` at session start. Invoke
+lifecycle skills from Agent chat with `/` (for example `/init`, `/using-skills`).
+
+*(For the full Cursor guide, see [cursor-setup.md](./cursor-setup.md)).*
 
 #### Any Markdown-aware agent
 Use `AGENTS.md` or the tool's equivalent instruction file to point the agent at

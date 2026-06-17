@@ -37,6 +37,7 @@ Load **one skill at a time** for the current step — do not preload the full li
 | Phase | Skill |
 |-------|-------|
 | Always | [using-skills](./skills/using-skills/SKILL.md) |
+| Multi-phase orchestration | [dev-orchestrator](./skills/dev-orchestrator/SKILL.md) (alias dev-flow) |
 | Initializing a project | [init](./skills/init/SKILL.md) |
 | Maintaining agent context as the project grows | [context-engineering](./skills/context-engineering/SKILL.md) |
 | Defining what to build | [spec-driven-development](./skills/spec-driven-development/SKILL.md) |

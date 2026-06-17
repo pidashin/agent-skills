@@ -23,7 +23,8 @@ Skills are workflows with exit criteria, not reference docs. Do not preload the 
 
 ```
 Task arrives
-    → Identify the current step (not the whole project)
+    → Non-trivial / multi-phase / need resume? → dev-orchestrator (alias dev-flow)
+    → Otherwise: identify the current step (not the whole project)
     → Load ONE matching skill
     → Follow it to completion
     → Re-run discovery for the next step (may be the same skill or a different one)
@@ -96,6 +97,7 @@ When a task arrives, identify the **current step** and load **one** skill. Re-ru
 ```
 Task arrives — what is the current step?
     │
+    ├── Multi-phase work, subagents, or resume needed? ────────→ dev-orchestrator
     ├── First time adopting this skill pack in the project? ──→ init
     ├── Rules, map, or session context stale or drifting? ──→ context-engineering
     ├── Requirements unclear or no acceptance criteria? ───────→ spec-driven-development
@@ -183,6 +185,7 @@ spec (what changes, what must not) → plan → build* → review* → retro →
 | Phase | Skill | Load when |
 |-------|-------|-----------|
 | Meta | `using-skills` | Session start; unsure which skill applies |
+| Orchestrator | `dev-orchestrator` | Multi-phase work, subagents, resume; alias dev-flow |
 | Onboard | `init` | First adoption of this skill pack in the project |
 | Context | `context-engineering` | Rules/map stale; agent drifting from conventions |
 | Spec | `spec-driven-development` | Requirements or acceptance criteria missing |

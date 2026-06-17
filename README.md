@@ -16,12 +16,13 @@ These skills bolt the senior-engineer scaffolding back on. They are not referenc
 
 ## Skills
 
-12 skills organised around onboarding, context maintenance, and the development lifecycle.
+13 skills organised around onboarding, context maintenance, orchestration, and the development lifecycle.
 
 ### Meta and onboarding
 | Skill | Phase | What it does |
 |-------|-------|--------------|
 | [using-skills](./skills/using-skills/SKILL.md) | Always | Routes to the right skill; enforces five non-negotiables for every session |
+| [dev-orchestrator](./skills/dev-orchestrator/SKILL.md) | Orchestrator | Multi-phase controller with subagents, resumable state, maker/checker separation (alias dev-flow) |
 | [init](./skills/init/SKILL.md) | Onboarding | One-time setup: level 1 rules files, domain knowledge store location, GitHub CLI readiness |
 | [context-engineering](./skills/context-engineering/SKILL.md) | Context | Keeps rules files and project maps current; packs selective context per session |
 
@@ -48,6 +49,12 @@ the same skill workflow.
 
 | Command | Purpose | Skill |
 |---------|---------|-------|
+| `/dev-orchestrator` | Start or continue multi-phase work (new task or continue) | [dev-orchestrator](./skills/dev-orchestrator/SKILL.md) |
+| `/dev-flow` | Alias for `/dev-orchestrator` | [dev-orchestrator](./skills/dev-orchestrator/SKILL.md) |
+| `/dev-flow-tasks` | List in-progress tasks with phase, next action, and blockers | [dev-orchestrator](./skills/dev-orchestrator/SKILL.md) |
+
+Orchestrator state and overlay paths vary by AI tool. See [docs/dev-orchestrator-paths.md](./docs/dev-orchestrator-paths.md).
+
 | `/init` | One-time setup: level 1 rules files and domain knowledge store | [init](./skills/init/SKILL.md) |
 | `/context` | Audit and refresh rules files, project map, and session context | [context-engineering](./skills/context-engineering/SKILL.md) |
 | `/spec` | Define acceptance criteria and scope before code | [spec-driven-development](./skills/spec-driven-development/SKILL.md) |
@@ -62,6 +69,7 @@ Tool-specific command locations:
 - Claude Code: [`.claude/commands/`](./.claude/commands/)
 - Gemini CLI: [`.gemini/commands/`](./.gemini/commands/)
 - Antigravity CLI: [`commands/`](./commands/)
+- Cursor: invoke skills via `/` in Agent chat, or add wrappers under `.cursor/commands/` (see [cursor-setup.md](./docs/cursor-setup.md))
 
 ---
 
@@ -94,6 +102,7 @@ These skills follow the principles from Addy Osmani's agent-skills project:
 
 For detailed integration guides and configuration steps, see the documentation:
 - [Getting Started](./docs/getting-started.md)
+- [Cursor Setup](./docs/cursor-setup.md)
 - [Antigravity Setup](./docs/antigravity-setup.md)
 
 ### GitHub CLI
@@ -130,7 +139,16 @@ Install or reference the [`skills/`](./skills/) directory, and use
 
 ### Cursor
 
-Copy skills into `.cursor/rules/` or reference them in your project rules.
+Install with `gh skill` (recommended) or symlink `skills/` into `.cursor/skills/`.
+Add `AGENTS.md` for always-on non-negotiables; invoke lifecycle skills with `/`
+in Agent chat.
+
+```bash
+gh skill install pidashin/agent-skills --all --agent cursor
+```
+
+See [Cursor Setup](./docs/cursor-setup.md) for user vs project scope, rules,
+and verification steps.
 
 ### Antigravity CLI
 
@@ -149,6 +167,7 @@ These are plain Markdown files. Any agent that accepts system prompts or instruc
 agent-skills/
 ├── skills/                 # Shared skill workflows
 │   ├── using-skills/       # Meta skill
+│   ├── dev-orchestrator/   # Multi-phase orchestrator (alias dev-flow)
 │   ├── init/               # Project onboarding
 │   ├── context-engineering/  # Ongoing context maintenance
 │   └── ...
@@ -157,7 +176,8 @@ agent-skills/
 ├── commands/               # Antigravity CLI slash commands
 ├── .claude-plugin/         # Claude plugin manifest
 ├── plugin.json             # Antigravity plugin manifest
-└── docs/                   # Setup guides
+└── docs/                   # Setup guides (getting-started, cursor-setup, antigravity-setup) and tool-specific path mappings
+    └── dev-orchestrator-paths.md
 ```
 
 ---
