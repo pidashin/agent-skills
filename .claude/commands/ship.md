@@ -1,4 +1,5 @@
 ---
+name: ship
 description: Prepare atomic commits and reviewable shipping notes
 ---
 

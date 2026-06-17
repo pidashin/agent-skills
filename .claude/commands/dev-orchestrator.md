@@ -1,4 +1,5 @@
 ---
+name: dev-orchestrator
 description: Start or continue multi-phase work via dev-orchestrator (alias dev-flow)
 ---
 

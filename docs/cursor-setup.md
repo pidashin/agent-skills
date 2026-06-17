@@ -1,60 +1,49 @@
 # Using agent-skills with Cursor
 
-Cursor discovers skills automatically and loads them on demand. Installing this
-repository gives the agent structured workflows, lifecycle entrypoints, and
+Cursor discovers skills automatically and loads them on demand. Installing
+**agent-skills** gives the agent structured workflows, lifecycle entrypoints, and
 verification gates without stuffing every skill into context at session start.
 
 ---
 
 ## Installation
 
-### From GitHub with `gh skill` (Recommended)
+### Add marketplace (recommended)
 
-Install all skills for Cursor with the GitHub CLI:
+1. In Cursor: **Settings → Plugins → Add marketplace**.
+2. Paste the repository URL:
+   ```
+   https://github.com/pidashin/agent-skills
+   ```
+3. Install **agent-skills** from the marketplace panel.
+4. Restart Cursor if skills do not appear immediately.
+5. On each project, run `/init` once to create `AGENTS.md` and project rules.
 
-```bash
-gh skill install pidashin/agent-skills --all --agent cursor
-```
+Confirm under **Cursor Settings → Rules, Commands → Agent Decides** that skills
+such as `using-skills` and `init` appear.
 
-**User scope** (available in every project on your machine):
+This installs a **custom marketplace** from the GitHub repo — not the public Cursor
+Marketplace. No separate signup or submission is required on your side.
 
-```bash
-gh skill install pidashin/agent-skills --all --agent cursor --scope user
-```
+See also: [Claude Setup](./claude-setup.md) and [Antigravity Setup](./antigravity-setup.md)
+for install steps on other tools.
 
-**Project scope** (committed with the repo, shared with teammates):
+### From a local clone
 
-```bash
-gh skill install pidashin/agent-skills --all --agent cursor --scope project
-```
-
-To inspect before installing:
-
-```bash
-gh skill preview pidashin/agent-skills
-```
-
-`gh skill` is a preview GitHub CLI feature. Confirm it exists in your local `gh`
-version before depending on it. At project scope, Cursor installs skills into
-`.cursor/skills/` (or the shared `.agents/skills/` directory).
-
-### From a Local Clone
-
-If you are developing or customizing the skills locally:
+If you have cloned the repository locally (for example to customize skills before
+installing):
 
 1. Clone the repository:
    ```bash
    git clone https://github.com/pidashin/agent-skills.git
    ```
-2. Install from the local path:
-   ```bash
-   gh skill install /path/to/agent-skills --all --agent cursor --from-local
-   ```
+2. In Cursor: **Settings → Plugins → Add marketplace** → paste the **local path**
+   to the clone.
 
-Or symlink the skills directory into your project:
+Or symlink individual skills into a project:
 
 ```bash
-ln -s /path/to/agent-skills/skills .cursor/skills/agent-skills
+ln -s /path/to/agent-skills/skills/using-skills .cursor/skills/using-skills
 ```
 
 Each skill must remain a folder containing `SKILL.md` (for example
@@ -62,15 +51,15 @@ Each skill must remain a folder containing `SKILL.md` (for example
 
 ### From Cursor Settings (Remote Rule)
 
-You can also import from GitHub in the UI:
+You can import rules from GitHub without installing the full plugin:
 
 1. Open **Cursor Settings → Rules, Commands**
 2. Click **+ Add Rule** next to **Project Rules**
 3. Select **Remote Rule (Github)**
 4. Enter `https://github.com/pidashin/agent-skills`
 
-This imports rule files from the repository. For the full skill pack, prefer
-`gh skill install` so every lifecycle skill lands in `.cursor/skills/`.
+This imports rule files only. For the full skill pack and slash commands, use
+**Add marketplace** above.
 
 ---
 
@@ -90,7 +79,7 @@ Start with `using-skills` to determine which skill applies to the current step.
 See AGENTS.md in the agent-skills repository for the five non-negotiables.
 ```
 
-When skills are installed via `gh skill`, the agent discovers them by name and
+When the plugin is installed, the agent discovers skills by name and
 description — you do not need to copy skill bodies into `AGENTS.md`.
 
 ### `.cursor/rules/` (optional, project-specific)
@@ -221,18 +210,11 @@ as a reference for the prompts each lifecycle step should run.
 
 ---
 
-## User vs Project Scope
+## User vs project scope
 
-| Scope | Install path | Best for |
-|-------|--------------|----------|
-| **User** (`--scope user`) | `~/.cursor/skills/` | Your personal workflow across all repos |
-| **Project** (`--scope project`) | `.cursor/skills/` in the repo | Team-shared skills checked into git |
-
-A common setup:
-
-- **User scope:** install the full `agent-skills` pack once for yourself.
-- **Project scope:** add only `AGENTS.md` and project-specific rules; optionally
-  add repo-specific skills alongside the shared pack.
+When installing from the marketplace panel, choose **user** scope to use
+**agent-skills** across all projects on your machine, or **project** scope to
+commit the plugin with a specific repository for your team.
 
 ---
 
@@ -263,6 +245,7 @@ Keep rules minimal. Put procedural lifecycle content in skills, not in rules.
 ## Further Reading
 
 - [Getting Started](./getting-started.md) — skill architecture and adoption workflow
+- [Claude Setup](./claude-setup.md) — install via `/plugin marketplace add`
+- [Antigravity Setup](./antigravity-setup.md) — install via `agy plugin install`
 - [Cursor: Agent Skills](https://cursor.com/docs/context/skills) — official skill format and directories
 - [Cursor: Rules](https://cursor.com/docs/context/rules) — project rules and `AGENTS.md`
-- [GitHub CLI: gh skill install](https://cli.github.com/manual/gh_skill_install) — install flags and agent targets

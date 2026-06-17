@@ -1,4 +1,5 @@
 ---
+name: build
 description: Implement the current slice with only the build skills that apply
 ---
 

@@ -1,0 +1,22 @@
+{
+  "name": "agent-skills",
+  "version": "1.0.0",
+  "description": "Production-grade engineering skills for AI coding agents — spec-driven development, verified APIs, incremental implementation, and review gates.",
+  "author": {
+    "name": "pidashin"
+  },
+  "homepage": "https://github.com/pidashin/agent-skills",
+  "repository": "https://github.com/pidashin/agent-skills",
+  "license": "MIT",
+  "keywords": [
+    "skills",
+    "workflow",
+    "spec-driven-development",
+    "test-driven-development",
+    "code-review",
+    "dev-orchestrator",
+    "dev-flow"
+  ],
+  "skills": "./skills",
+  "commands": "./.claude/commands"
+}

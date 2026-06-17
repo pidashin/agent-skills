@@ -1,4 +1,5 @@
 ---
+name: init
 description: One-time setup: level 1 rules files, domain knowledge store, and GitHub CLI readiness
 ---
 

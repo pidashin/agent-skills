@@ -1,4 +1,5 @@
 ---
+name: retro
 description: Capture design decisions, trade-offs, and codebase gotchas
 ---
 

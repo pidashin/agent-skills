@@ -1,4 +1,5 @@
 ---
+name: context
 description: Audit and refresh rules files, project map, and session context
 ---
 

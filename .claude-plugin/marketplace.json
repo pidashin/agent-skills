@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json.schemastore.org/claude-code-marketplace.json",
+  "name": "pidashin-agent-skills",
+  "description": "Production-grade engineering skills for AI coding agents — covering the full software development lifecycle from spec to ship.",
+  "owner": {
+    "name": "pidashin",
+    "url": "https://github.com/pidashin"
+  },
+  "plugins": [
+    {
+      "name": "agent-skills",
+      "source": {
+        "source": "github",
+        "repo": "pidashin/agent-skills"
+      },
+      "description": "Production-grade engineering skills covering every phase of software development: spec, plan, build, verify, review, and ship.",
+      "homepage": "https://github.com/pidashin/agent-skills",
+      "license": "MIT",
+      "keywords": [
+        "skills",
+        "agents",
+        "engineering",
+        "spec",
+        "tdd",
+        "review",
+        "ship"
+      ]
+    }
+  ]
+}

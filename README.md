@@ -69,7 +69,7 @@ Tool-specific command locations:
 - Claude Code: [`.claude/commands/`](./.claude/commands/)
 - Gemini CLI: [`.gemini/commands/`](./.gemini/commands/)
 - Antigravity CLI: [`commands/`](./commands/)
-- Cursor: invoke skills via `/` in Agent chat, or add wrappers under `.cursor/commands/` (see [cursor-setup.md](./docs/cursor-setup.md))
+- Cursor: plugin via [`.cursor-plugin/`](./.cursor-plugin/) (see [cursor-setup.md](./docs/cursor-setup.md))
 
 ---
 
@@ -98,66 +98,54 @@ These skills follow the principles from Addy Osmani's agent-skills project:
 
 ---
 
-## Usage
+## Installation
 
-For detailed integration guides and configuration steps, see the documentation:
-- [Getting Started](./docs/getting-started.md)
-- [Cursor Setup](./docs/cursor-setup.md)
-- [Antigravity Setup](./docs/antigravity-setup.md)
+Install **agent-skills** from GitHub for your AI tool:
 
-### GitHub CLI
+| Tool | Install steps | Guide |
+|------|---------------|-------|
+| **Cursor** | **Settings → Plugins → Add marketplace** → `https://github.com/pidashin/agent-skills` → install **agent-skills** | [cursor-setup.md](./docs/cursor-setup.md) |
+| **Claude Code** | `/plugin marketplace add pidashin/agent-skills` then `/plugin install agent-skills@pidashin-agent-skills` | [claude-setup.md](./docs/claude-setup.md) |
+| **Antigravity** | `agy plugin install https://github.com/pidashin/agent-skills.git` | [antigravity-setup.md](./docs/antigravity-setup.md) |
 
-When installing or managing this skill pack from GitHub, prefer the GitHub CLI
-`gh skill` command. It installs skills into agent-specific locations and supports
-many AI coding agents from one workflow.
-
-```bash
-gh skill install pidashin/agent-skills --all --agent <agent>
-```
-
-Use `gh skill preview pidashin/agent-skills` before installing, and `gh skill
-update --all` to update installed skills. `gh skill` is currently a preview
-GitHub CLI feature, so confirm it is available in your local `gh` version before
-depending on it.
-
-### Claude Code
-
-Install this repository as a Claude plugin, or drop the `skills/` directory into
-your project and reference it in your `CLAUDE.md`:
-
-```
-Read and follow the skills in ./skills/ for all coding tasks.
-Start with ./skills/using-skills/SKILL.md.
-```
-
-The Claude plugin manifest is [`.claude-plugin/plugin.json`](./.claude-plugin/plugin.json).
+After installing on any tool, run **`/init`** once per project to set up `AGENTS.md`
+and project-specific rules.
 
 ### Gemini CLI
 
 Install or reference the [`skills/`](./skills/) directory, and use
 [`.gemini/commands/`](./.gemini/commands/) for Gemini command entrypoints.
 
-### Cursor
-
-Install with `gh skill` (recommended) or symlink `skills/` into `.cursor/skills/`.
-Add `AGENTS.md` for always-on non-negotiables; invoke lifecycle skills with `/`
-in Agent chat.
-
-```bash
-gh skill install pidashin/agent-skills --all --agent cursor
-```
-
-See [Cursor Setup](./docs/cursor-setup.md) for user vs project scope, rules,
-and verification steps.
-
-### Antigravity CLI
-
-Install this repository as a plugin. Antigravity command entrypoints live in
-[`commands/`](./commands/).
-
 ### Any agent
 
-These are plain Markdown files. Any agent that accepts system prompts or instruction files can use them. Point the agent at `skills/using-skills/SKILL.md` to start.
+These are plain Markdown files. Any agent that accepts system prompts or instruction
+files can use them. Point the agent at `skills/using-skills/SKILL.md` to start.
+
+---
+
+## Documentation
+
+- [Getting Started](./docs/getting-started.md) — skill architecture and lifecycle
+- [Claude Setup](./docs/claude-setup.md)
+- [Cursor Setup](./docs/cursor-setup.md)
+- [Antigravity Setup](./docs/antigravity-setup.md)
+- [Dev-orchestrator paths](./docs/dev-orchestrator-paths.md) — tool-specific state locations
+
+---
+
+## Usage
+
+For detailed integration, verification, and project rules setup, see the guides above.
+
+### Claude Code (manual fallback)
+
+If you cannot use the plugin marketplace, drop `skills/` into your project and add
+to `CLAUDE.md`:
+
+```
+Read and follow the skills in ./skills/ for all coding tasks.
+Start with ./skills/using-skills/SKILL.md.
+```
 
 ---
 
@@ -171,12 +159,17 @@ agent-skills/
 │   ├── init/               # Project onboarding
 │   ├── context-engineering/  # Ongoing context maintenance
 │   └── ...
-├── .claude/commands/       # Claude Code slash commands
+├── .claude/commands/       # Claude Code slash commands (also used by Cursor plugin)
+├── .claude-plugin/         # Claude plugin manifest + custom marketplace index
+├── .cursor-plugin/         # Cursor plugin manifest + custom marketplace index
 ├── .gemini/commands/       # Gemini CLI slash commands
 ├── commands/               # Antigravity CLI slash commands
-├── .claude-plugin/         # Claude plugin manifest
 ├── plugin.json             # Antigravity plugin manifest
-└── docs/                   # Setup guides (getting-started, cursor-setup, antigravity-setup) and tool-specific path mappings
+└── docs/                   # Setup guides and tool-specific path mappings
+    ├── getting-started.md
+    ├── claude-setup.md
+    ├── cursor-setup.md
+    ├── antigravity-setup.md
     └── dev-orchestrator-paths.md
 ```
 

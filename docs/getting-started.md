@@ -69,68 +69,21 @@ updates files.
 After the project grows or agent output drifts from conventions, invoke `/context`
 to audit rules files, update the project map, and pack context for the current task.
 
-### 2. Configure Your AI Coding Tool
+### 2. Install the plugin
 
-#### GitHub CLI (`gh skill`)
-When installing or managing skills from GitHub, prefer the GitHub CLI
-`gh skill` workflow:
+Install **agent-skills** for your AI tool:
 
-```bash
-gh skill install pidashin/agent-skills --all --agent <agent>
-```
+| Tool | Install |
+|------|---------|
+| **Cursor** | **Settings → Plugins → Add marketplace** → `https://github.com/pidashin/agent-skills` → install **agent-skills**. See [cursor-setup.md](./cursor-setup.md). |
+| **Claude Code** | `/plugin marketplace add pidashin/agent-skills` then `/plugin install agent-skills@pidashin-agent-skills`. See [claude-setup.md](./claude-setup.md). |
+| **Antigravity** | `agy plugin install https://github.com/pidashin/agent-skills.git`. See [antigravity-setup.md](./antigravity-setup.md). |
+| **Gemini CLI** | Reference the `skills/` directory and use `.gemini/commands/` for command entrypoints. |
 
-Useful commands:
-- `gh skill preview pidashin/agent-skills` — inspect skills before installing.
-- `gh skill list` — list installed skills.
-- `gh skill update --all` — update installed skills.
-- `gh skill publish --dry-run` — validate this repository before publishing a release.
-
-`gh skill` is a preview GitHub CLI feature, so verify the command is available in
-your installed `gh` version before relying on it.
-
-#### Antigravity CLI (`agy`)
-Install this repository with `gh skill` when available:
-```bash
-gh skill install pidashin/agent-skills --all --agent antigravity
-```
-
-If your Antigravity environment still requires native plugin installation, use:
-```bash
-agy plugin install https://github.com/pidashin/agent-skills.git
-```
-*(For more details, see [antigravity-setup.md](./antigravity-setup.md)).*
-
-#### Claude Code
-Install this repository as a Claude plugin, or add the following instruction to
-your `CLAUDE.md` file at the root of your project:
-```
-Read and follow the skills in ./skills/ for all coding tasks.
-Start with ./skills/using-skills/SKILL.md to determine the active skill.
-```
-
-Claude slash commands are stored in `.claude/commands/`.
-
-#### Gemini CLI
-Install or reference the `skills/` directory, and use `.gemini/commands/` for
-Gemini command entrypoints.
-
-#### Cursor
-Install skills for Cursor with `gh skill` when available:
-
-```bash
-gh skill install pidashin/agent-skills --all --agent cursor
-```
-
-Use `--scope user` for a global install (`~/.cursor/skills/`) or `--scope project`
-to commit skills under `.cursor/skills/` in the repo.
-
-Add `AGENTS.md` at the project root (or a short always-on rule in
-`.cursor/rules/*.mdc`) so the agent loads `using-skills` at session start. Invoke
-lifecycle skills from Agent chat with `/` (for example `/init`, `/using-skills`).
-
-*(For the full Cursor guide, see [cursor-setup.md](./cursor-setup.md)).*
+After installing, run **`/init`** once per project (see step 1 above).
 
 #### Any Markdown-aware agent
+
 Use `AGENTS.md` or the tool's equivalent instruction file to point the agent at
 `skills/using-skills/SKILL.md`. The skills are plain Markdown workflows, so tools
 without native skill support can still load them as rules or project context.

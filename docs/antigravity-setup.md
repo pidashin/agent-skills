@@ -1,66 +1,62 @@
 # Using agent-skills with Antigravity CLI
 
-Installing this repository as a native plugin in the Antigravity CLI (`agy`)
-gives the agent access to structured workflows, slash commands, and lifecycle
-gates directly within its execution environment.
+Installing **agent-skills** as a plugin in the Antigravity CLI (`agy`) gives the
+agent access to structured workflows, slash commands, and lifecycle gates directly
+within its execution environment.
 
 ---
 
 ## Installation
 
-### From GitHub with `gh skill` (Recommended)
+### Install from GitHub (recommended)
 
-Install all skills for Antigravity with the GitHub CLI:
-
-```bash
-gh skill install pidashin/agent-skills --all --agent antigravity
-```
-
-To inspect before installing:
-
-```bash
-gh skill preview pidashin/agent-skills
-```
-
-`gh skill` is a preview GitHub CLI feature. Confirm it exists in your local `gh`
-version before depending on it.
-
-### From the Remote Repository with `agy`
-
-Register the plugin globally in your Antigravity environment:
 ```bash
 agy plugin install https://github.com/pidashin/agent-skills.git
 ```
 
-### From a Local Clone
+Verify it is active:
 
-If you are developing or customizing the skills locally:
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/pidashin/agent-skills.git
-   ```
-2. Install the plugin using `agy`:
-   ```bash
-   agy plugin install /path/to/agent-skills
-   ```
-
-Verify that the plugin is installed and active:
 ```bash
 agy plugin list
+```
+
+On each project, run `/init` once to create `AGENTS.md` and project rules.
+
+To update after a new release, reinstall from the same URL.
+
+### From a local clone
+
+If you have cloned the repository locally (for example to customize skills):
+
+```bash
+git clone https://github.com/pidashin/agent-skills.git
+agy plugin install /path/to/agent-skills
+agy plugin list
+```
+
+Validate before installing:
+
+```bash
+agy plugin validate /path/to/agent-skills
 ```
 
 ---
 
 ## How It Works in Antigravity
 
-Antigravity natively supports the `agent-skills` pattern through **progressive disclosure** and **session-start lifecycle hooks**:
+Antigravity natively supports the `agent-skills` pattern through **progressive
+disclosure** and **session-start lifecycle hooks**:
 
 ### 1. Onboarding Phase (Initialization)
+
 Before adopting the skills in a new repository, run the onboarding command:
+
 ```bash
 /init
 ```
+
 This command helps configure project-specific settings, including:
+
 - Creating **level 1 rules files** with stack, commands, conventions, and boundaries.
 - Establishing the **designated domain knowledge store** (e.g., `docs/knowledge/` or a remote pointer).
 - Linking `AGENTS.md` to enforce the five non-negotiables.
@@ -69,12 +65,15 @@ After the project grows or agent output drifts, run `/context` to audit rules fi
 update the project map, and pack selective context for the current task.
 
 ### 2. Startup Verification
+
 At the start of every session:
+
 1. Antigravity reads `AGENTS.md` at the root of the workspace.
 2. It loads the meta-skill (`skills/using-skills/SKILL.md`) to establish the **five non-negotiables**.
 3. The agent runs the **Session Start Checklist** to verify scope boundaries and confirm verification criteria before writing any code.
 
 ### 3. Progressive Skill Activation
+
 Instead of loading all skills into the prompt context at once—which consumes excessive tokens—Antigravity dynamically loads the active skill based on the current phase:
 
 ```
@@ -96,7 +95,8 @@ spec → plan → build* → review* → retro → ship (git)
 
 ## Slash Commands
 
-The plugin registers the lifecycle slash commands directly in the Antigravity shell:
+The plugin registers the lifecycle slash commands directly in the Antigravity shell.
+Command entrypoints live in [`commands/`](../commands/).
 
 | Command | Lifecycle Phase | Activated Skill |
 |---------|-----------------|-----------------|
@@ -108,3 +108,7 @@ The plugin registers the lifecycle slash commands directly in the Antigravity sh
 | `/review` | Review | Review skills as triggered (see `using-skills`) |
 | `/retro` | Retro | `retrospective-and-knowledge-capture` |
 | `/ship` | Ship | `git-and-commit-discipline` |
+| `/dev-orchestrator`, `/dev-flow` | Orchestrator | `dev-orchestrator` |
+| `/dev-flow-tasks` | Orchestrator | `dev-orchestrator` (task dashboard) |
+
+Orchestrator state paths are tool-specific. See [dev-orchestrator-paths.md](./dev-orchestrator-paths.md).

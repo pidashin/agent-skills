@@ -1,4 +1,5 @@
 ---
+name: planning
 description: Break a confirmed spec into small, verifiable implementation tasks
 ---
 

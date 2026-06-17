@@ -1,4 +1,5 @@
 ---
+name: review
 description: Review the change before merge with only the review skills that apply
 ---
 

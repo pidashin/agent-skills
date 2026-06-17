@@ -56,7 +56,7 @@ agent that can read the user's home directory.
 Slash commands: [`.claude/commands/`](../.claude/commands/) (`/dev-orchestrator`,
 `/dev-flow`, `/dev-flow-tasks`).
 
-Skills from this repo are typically installed via Claude plugin or `gh skill`.
+Skills from this repo are installed via the Claude, Cursor, or Antigravity plugin flows above.
 
 ### Cursor
 

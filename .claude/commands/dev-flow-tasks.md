@@ -1,4 +1,5 @@
 ---
+name: dev-flow-tasks
 description: List in-progress dev-flow tasks with phase, next action, and blockers
 ---
 

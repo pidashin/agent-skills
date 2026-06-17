@@ -1,4 +1,5 @@
 ---
+name: spec
 description: Define what to build with acceptance criteria before writing code
 ---
 

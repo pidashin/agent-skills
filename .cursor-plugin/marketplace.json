@@ -1,0 +1,16 @@
+{
+  "name": "pidashin-agent-skills",
+  "owner": {
+    "name": "pidashin"
+  },
+  "metadata": {
+    "description": "Production-grade engineering skills for AI coding agents"
+  },
+  "plugins": [
+    {
+      "name": "agent-skills",
+      "source": ".",
+      "description": "Spec-driven development, verified APIs, incremental implementation, and review gates"
+    }
+  ]
+}
