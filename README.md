@@ -50,7 +50,7 @@ the same skill workflow.
 | `/context` | Audit and refresh rules files, project map, and session context | [context-engineering](./skills/context-engineering/SKILL.md) |
 | `/spec` | Define acceptance criteria and scope before code | [spec-driven-development](./skills/spec-driven-development/SKILL.md) |
 | `/planning` | Break a confirmed spec into verifiable tasks | [planning-and-task-breakdown](./skills/planning-and-task-breakdown/SKILL.md) |
-| `/build` | Verify APIs, implement in slices, and prove behavior with tests | [source-grounded-development](./skills/source-grounded-development/SKILL.md), [incremental-implementation](./skills/incremental-implementation/SKILL.md), [test-driven-development](./skills/test-driven-development/SKILL.md) |
+| `/build` | Implement the current slice; load build skills only when their triggers match | See [using-skills](./skills/using-skills/SKILL.md) |
 | `/retro` | Capture design decisions and codebase gotchas | [retrospective-and-knowledge-capture](./skills/retrospective-and-knowledge-capture/SKILL.md) |
 | `/ship` | Prepare atomic commits and reviewable shipping notes | [git-and-commit-discipline](./skills/git-and-commit-discipline/SKILL.md) |
 

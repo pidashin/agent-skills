@@ -19,7 +19,7 @@ The skills are organized around the software development lifecycle:
 3. **Context (`context-engineering`)** — Ongoing maintenance: keep rules files and project maps current; pack selective context per session.
 4. **Spec (`spec-driven-development`)** — Defines acceptance criteria and scope boundaries before any code is written.
 5. **Plan (`planning-and-task-breakdown`)** — Decomposes the spec into small, verifiable, and ordered tasks.
-6. **Build (`source-grounded-development`, `incremental-implementation`, `test-driven-development`)** — Verify APIs in official docs, implement in thin slices, and prove behavior with tests.
+6. **Build** — Load `source-grounded-development`, `incremental-implementation`, and/or `test-driven-development` only when their triggers match the current slice (see `using-skills`).
 7. **Retro (`retrospective-and-knowledge-capture`)** — Records design patterns, trade-offs, and gotchas as domain knowledge.
 8. **Ship (`git-and-commit-discipline`)** — Enforces atomic commits, conventional commit messages, and reviewable PRs.
 
@@ -30,13 +30,13 @@ The skills are organized around the software development lifecycle:
 When working on a feature or a complex refactor, the agent will transition through the following phases:
 
 ```
-spec → plan → build (source-grounded + incremental + TDD) → retro → ship (git)
+spec → plan → build* → retro → ship (git)
 ```
 
 For a simple bug fix, the agent can skip spec/plan and proceed directly:
 
 ```
-build (source-grounded + incremental + TDD) → retro → ship (git)
+build* → retro → ship (git)
 ```
 
 ---

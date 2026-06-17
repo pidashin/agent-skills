@@ -32,7 +32,7 @@ The simplest solution that satisfies the acceptance criteria is the right soluti
 
 ## Skills
 
-Load the appropriate skill for the current phase:
+Load **one skill at a time** for the current step — do not preload the full lifecycle. Use [using-skills](./skills/using-skills/SKILL.md) to discover which skill applies:
 
 | Phase | Skill |
 |-------|-------|
