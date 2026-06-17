@@ -3,12 +3,15 @@ prompt = """
 Invoke the init skill.
 
 Inspect the current project for existing agent instruction files and knowledge
-stores. Ask the user whether domain knowledge should be stored locally, remotely,
-through another custom workflow, or skipped for now. Do not choose the location
-silently.
+stores. If the project uses GitHub, check whether GitHub CLI is installed,
+authenticated, and has `gh skill` available. Ask before installing `gh`, upgrading
+it, or running `gh auth login`.
+
+Ask the user whether domain knowledge should be stored locally, remotely, through
+another custom workflow, or skipped for now. Do not choose the location silently.
 
 After the user decides, create or update only the necessary project instruction
 files and knowledge-store files. Preserve existing instructions and report the
-created or updated files, the selected domain knowledge location, access status,
-and any follow-up needed for MCP or connector setup.
+created or updated files, GitHub CLI readiness, the selected domain knowledge
+location, access status, and any follow-up needed for MCP or connector setup.
 """
