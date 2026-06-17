@@ -56,8 +56,30 @@ updates files.
 
 ### 2. Configure Your AI Coding Tool
 
+#### GitHub CLI (`gh skill`)
+When installing or managing skills from GitHub, prefer the GitHub CLI
+`gh skill` workflow:
+
+```bash
+gh skill install pidashin/agent-skills --all --agent <agent>
+```
+
+Useful commands:
+- `gh skill preview pidashin/agent-skills` — inspect skills before installing.
+- `gh skill list` — list installed skills.
+- `gh skill update --all` — update installed skills.
+- `gh skill publish --dry-run` — validate this repository before publishing a release.
+
+`gh skill` is a preview GitHub CLI feature, so verify the command is available in
+your installed `gh` version before relying on it.
+
 #### Antigravity CLI (`agy`)
-Install this repository as a native plugin to let the CLI automatically load, enforce, and interact with these skills:
+Install this repository with `gh skill` when available:
+```bash
+gh skill install pidashin/agent-skills --all --agent antigravity
+```
+
+If your Antigravity environment still requires native plugin installation, use:
 ```bash
 agy plugin install https://github.com/pidashin/agent-skills.git
 ```

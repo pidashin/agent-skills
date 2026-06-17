@@ -99,6 +99,31 @@ Closes #142
 
 ---
 
+## GitHub Skill Management
+
+When interacting with GitHub specifically to install, inspect, update, or publish
+agent skills, prefer the GitHub CLI `gh skill` command.
+
+Verified commands:
+
+- `gh skill install <repository> [<skill[@version]>]`
+- `gh skill list`
+- `gh skill preview <repository> [<skill>]`
+- `gh skill publish [<directory>]`
+- `gh skill search <query>`
+- `gh skill update --all`
+
+Use `gh skill publish --dry-run` to validate skills before publishing a GitHub
+release. Use `gh skill install pidashin/agent-skills --all --agent <agent>` when
+installing this repository for a supported AI coding agent.
+
+`gh skill` is a preview GitHub CLI feature. Before using it in a task, verify it
+is available in the installed `gh` version and confirm the command shape against
+the official GitHub CLI manual. For GitHub operations outside skill management,
+use the appropriate verified `git` or `gh` command instead.
+
+---
+
 ## Anti-Rationalization Table
 
 | Excuse | Rebuttal |

@@ -88,6 +88,21 @@ For detailed integration guides and configuration steps, see the documentation:
 - [Getting Started](./docs/getting-started.md)
 - [Antigravity Setup](./docs/antigravity-setup.md)
 
+### GitHub CLI
+
+When installing or managing this skill pack from GitHub, prefer the GitHub CLI
+`gh skill` command. It installs skills into agent-specific locations and supports
+many AI coding agents from one workflow.
+
+```bash
+gh skill install pidashin/agent-skills --all --agent <agent>
+```
+
+Use `gh skill preview pidashin/agent-skills` before installing, and `gh skill
+update --all` to update installed skills. `gh skill` is currently a preview
+GitHub CLI feature, so confirm it is available in your local `gh` version before
+depending on it.
+
 ### Claude Code
 
 Install this repository as a Claude plugin, or drop the `skills/` directory into

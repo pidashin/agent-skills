@@ -20,6 +20,7 @@ Set up the minimum project conventions needed for future agent sessions:
   equivalent already used by the project).
 - A designated domain knowledge store for future retrospectives.
 - Clear instructions telling agents where to read and write domain knowledge.
+- GitHub CLI readiness for GitHub-hosted skill installation and updates.
 
 ---
 
@@ -44,7 +45,7 @@ appropriate lifecycle skill instead.
 ### Step 1: Inspect the project
 
 Before writing files, check for existing project instructions and knowledge
-stores:
+stores. Also identify whether the project has a GitHub remote.
 
 - `AGENTS.md`
 - `CLAUDE.md`
@@ -55,10 +56,45 @@ stores:
 - `knowledge/`
 - `wiki/`
 - README files that mention agent workflows or project knowledge
+- `git remote -v` output, if the project is a git repository
 
 State what exists and what you are assuming before making changes.
 
-### Step 2: Ask for the domain knowledge decision
+### Step 2: Check GitHub CLI readiness
+
+If the project uses GitHub, check whether GitHub CLI is installed, authenticated,
+and capable of managing agent skills:
+
+- `command -v gh`
+- `gh --version`
+- `gh auth status`
+- `gh skill --help`
+
+If `gh` is missing, ask the user before installing it. Use the official GitHub CLI
+installation instructions for the user's operating system or package manager; do
+not invent package commands. If the install command requires network access,
+package-manager writes, or elevated permissions, ask before running it.
+
+If `gh` is installed but authentication is missing or broken, guide setup with
+`gh auth login`. Ask before starting login because it may open a browser, prompt
+for credentials, or update git protocol settings.
+
+If `gh` is authenticated but `gh skill` is unavailable, report that the installed
+GitHub CLI does not support the preview `gh skill` command yet. Ask whether to
+upgrade GitHub CLI or continue without GitHub skill automation.
+
+Record the result as one of:
+
+- `gh ready`: `gh` is installed, authenticated, and `gh skill` is available.
+- `gh installed, auth needed`: `gh` exists but `gh auth status` is not healthy.
+- `gh installed, skill unavailable`: `gh` exists but `gh skill` is unavailable.
+- `gh missing`: `gh` is not installed.
+- `not GitHub-hosted`: the project does not use a GitHub remote.
+
+Do not block local initialization if the user chooses not to install, upgrade, or
+authenticate `gh`. Record the follow-up instead.
+
+### Step 3: Ask for the domain knowledge decision
 
 Ask the user where domain knowledge should live. Offer these choices:
 
@@ -74,7 +110,7 @@ Do not choose silently. If the user selects a remote store, do not claim agents
 can read or write it until the relevant MCP or connector has been configured and
 verified in that project.
 
-### Step 3: Create or update only necessary files
+### Step 4: Create or update only necessary files
 
 Use the boring, smallest change that satisfies the user's decision.
 
@@ -103,7 +139,7 @@ For skip:
 - Add a short note that no domain knowledge store is configured.
 - Instruct future agents to ask before writing retrospective knowledge.
 
-### Step 4: Preserve existing instructions
+### Step 5: Preserve existing instructions
 
 When updating `AGENTS.md`, `CLAUDE.md`, or tool-specific rule files:
 
@@ -113,11 +149,12 @@ When updating `AGENTS.md`, `CLAUDE.md`, or tool-specific rule files:
 - Do not add lifecycle skills or command references unless they are relevant to
   initialization.
 
-### Step 5: Verify
+### Step 6: Verify
 
 Before finishing, report:
 
 - Which files were created or updated.
+- GitHub CLI readiness status, if the project uses GitHub.
 - The selected domain knowledge location.
 - Whether agent read/write access is local, remote verified, remote unverified,
   custom, or skipped.
@@ -133,6 +170,8 @@ Before finishing, report:
 | "The remote doc exists, so agents can use it." | Existence is not access. Remote read/write access must be verified through MCP, connector, or tool configuration. |
 | "I'll replace the old `AGENTS.md` with the standard one." | Preserve project-specific instructions. Merge only the necessary initialization guidance. |
 | "I'll add all possible tool configs while I'm here." | Initialization should create only what the user selected and what the project needs now. |
+| "GitHub CLI is probably installed." | Check `command -v gh`, `gh auth status`, and `gh skill --help`; do not assume. |
+| "I'll install or log in to `gh` automatically." | Installing tools and authenticating accounts affects the user's machine and credentials. Ask first. |
 
 ---
 
@@ -143,6 +182,8 @@ Before finishing, report:
 - You are claiming remote access works without verifying the configured tool.
 - You are adding agent-tool files for tools the project does not use.
 - You are changing unrelated docs, source files, or build configuration.
+- You are running package-manager install commands without user approval.
+- You are starting `gh auth login` without user approval.
 
 ---
 
@@ -153,6 +194,10 @@ Before finishing, report:
 
 Created or updated:
 - [file path]
+
+GitHub CLI:
+- Status: [gh ready / gh installed, auth needed / gh installed, skill unavailable / gh missing / not GitHub-hosted]
+- Follow-up: [only if needed]
 
 Domain knowledge store:
 - Location: [local path / remote URL or name / custom workflow / skipped]
@@ -169,6 +214,9 @@ Follow-up:
 ```
 □ Existing project instruction files were inspected before edits
 □ Assumptions were stated before writing files
+□ GitHub remote usage was checked
+□ GitHub CLI readiness was checked when the project uses GitHub
+□ Missing `gh`, broken auth, or missing `gh skill` was handled with user approval or recorded as follow-up
 □ User chose local, remote, other, or skip for domain knowledge
 □ Only necessary initialization files were created or updated
 □ Existing instructions were preserved

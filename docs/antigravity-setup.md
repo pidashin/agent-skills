@@ -8,7 +8,24 @@ gates directly within its execution environment.
 
 ## Installation
 
-### From the Remote Repository (Recommended)
+### From GitHub with `gh skill` (Recommended)
+
+Install all skills for Antigravity with the GitHub CLI:
+
+```bash
+gh skill install pidashin/agent-skills --all --agent antigravity
+```
+
+To inspect before installing:
+
+```bash
+gh skill preview pidashin/agent-skills
+```
+
+`gh skill` is a preview GitHub CLI feature. Confirm it exists in your local `gh`
+version before depending on it.
+
+### From the Remote Repository with `agy`
 
 Register the plugin globally in your Antigravity environment:
 ```bash
