@@ -16,13 +16,14 @@ These skills bolt the senior-engineer scaffolding back on. They are not referenc
 
 ## Skills
 
-7 skills organised around onboarding and the development lifecycle.
+8 skills organised around onboarding, context maintenance, and the development lifecycle.
 
 ### Meta and onboarding
 | Skill | Phase | What it does |
 |-------|-------|--------------|
 | [using-skills](./skills/using-skills/SKILL.md) | Always | Routes to the right skill; enforces five non-negotiables for every session |
-| [init](./skills/init/SKILL.md) | Onboarding | Sets up project instruction files and the designated domain knowledge store |
+| [init](./skills/init/SKILL.md) | Onboarding | One-time setup: level 1 rules files, domain knowledge store location, GitHub CLI readiness |
+| [context-engineering](./skills/context-engineering/SKILL.md) | Context | Keeps rules files and project maps current; packs selective context per session |
 
 ### Lifecycle
 | Skill | Phase | What it does |
@@ -43,7 +44,8 @@ the same skill workflow.
 
 | Command | Purpose | Skill |
 |---------|---------|-------|
-| `/init` | Set up project instruction files and choose a domain knowledge store | [init](./skills/init/SKILL.md) |
+| `/init` | One-time setup: level 1 rules files and domain knowledge store | [init](./skills/init/SKILL.md) |
+| `/context` | Audit and refresh rules files, project map, and session context | [context-engineering](./skills/context-engineering/SKILL.md) |
 | `/spec` | Define acceptance criteria and scope before code | [spec-driven-development](./skills/spec-driven-development/SKILL.md) |
 | `/planning` | Break a confirmed spec into verifiable tasks | [planning-and-task-breakdown](./skills/planning-and-task-breakdown/SKILL.md) |
 | `/build` | Verify external APIs and dependencies before implementation | [source-grounded-development](./skills/source-grounded-development/SKILL.md) |
@@ -142,6 +144,7 @@ agent-skills/
 ├── skills/                 # Shared skill workflows
 │   ├── using-skills/       # Meta skill
 │   ├── init/               # Project onboarding
+│   ├── context-engineering/  # Ongoing context maintenance
 │   └── ...
 ├── .claude/commands/       # Claude Code slash commands
 ├── .gemini/commands/       # Gemini CLI slash commands

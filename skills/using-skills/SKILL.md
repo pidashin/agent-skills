@@ -83,6 +83,7 @@ use the phase sequence to determine the order.
 | What you are doing | Skill to load |
 |--------------------|---------------|
 | Initializing a project for these skills | `init` |
+| Auditing or refreshing rules files, project maps, and session context | `context-engineering` |
 | Defining what to build; writing requirements or acceptance criteria | `spec-driven-development` |
 | Breaking work into tasks; estimating scope; sequencing | `planning-and-task-breakdown` |
 | Writing code; using a library, API, or framework feature | `source-grounded-development` |
@@ -94,6 +95,9 @@ use the phase sequence to determine the order.
 ```
 init -> spec -> plan -> build (source-grounded) -> retro -> ship (git)
 ```
+
+Run `context-engineering` anytime after init when rules drift, major features
+ship, or agent output quality declines — not only at onboarding.
 
 ### Phase order for a new feature
 

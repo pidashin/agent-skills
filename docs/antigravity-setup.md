@@ -61,8 +61,12 @@ Before adopting the skills in a new repository, run the onboarding command:
 /init
 ```
 This command helps configure project-specific settings, including:
-- Establishing the **designated domain knowledge store** (e.g., creating a `KNOWLEDGE.md` at the project root or designating a folder).
-- Linking the `AGENTS.md` file to enforce the five non-negotiables.
+- Creating **level 1 rules files** with stack, commands, conventions, and boundaries.
+- Establishing the **designated domain knowledge store** (e.g., `docs/knowledge/` or a remote pointer).
+- Linking `AGENTS.md` to enforce the five non-negotiables.
+
+After the project grows or agent output drifts, run `/context` to audit rules files,
+update the project map, and pack selective context for the current task.
 
 ### 2. Startup Verification
 At the start of every session:
@@ -92,6 +96,7 @@ The plugin registers the lifecycle slash commands directly in the Antigravity sh
 | Command | Lifecycle Phase | Activated Skill |
 |---------|-----------------|-----------------|
 | `/init` | Onboarding | `init` |
+| `/context` | Context maintenance | `context-engineering` |
 | `/spec` | Spec | `spec-driven-development` |
 | `/planning` | Plan | `planning-and-task-breakdown` |
 | `/build` | Build | `source-grounded-development` |

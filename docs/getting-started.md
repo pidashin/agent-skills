@@ -15,12 +15,13 @@ development.
 The skills are organized around the software development lifecycle:
 
 1. **Meta (`using-skills`)** — Routes the agent to the correct skill and enforces five non-negotiable rules for every session.
-2. **Init (`init`)** — Sets up project instruction files and chooses the designated domain knowledge store.
-3. **Spec (`spec-driven-development`)** — Defines acceptance criteria and scope boundaries before any code is written.
-4. **Plan (`planning-and-task-breakdown`)** — Decomposes the spec into small, verifiable, and ordered tasks.
-5. **Build (`source-grounded-development`)** — Verifies third-party APIs and libraries in official docs before coding.
-6. **Retro (`retrospective-and-knowledge-capture`)** — Records design patterns, trade-offs, and gotchas as domain knowledge.
-7. **Ship (`git-and-commit-discipline`)** — Enforces atomic commits, conventional commit messages, and reviewable PRs.
+2. **Init (`init`)** — One-time setup: level 1 rules files, domain knowledge store location, and GitHub CLI readiness.
+3. **Context (`context-engineering`)** — Ongoing maintenance: keep rules files and project maps current; pack selective context per session.
+4. **Spec (`spec-driven-development`)** — Defines acceptance criteria and scope boundaries before any code is written.
+5. **Plan (`planning-and-task-breakdown`)** — Decomposes the spec into small, verifiable, and ordered tasks.
+6. **Build (`source-grounded-development`)** — Verifies third-party APIs and libraries in official docs before coding.
+7. **Retro (`retrospective-and-knowledge-capture`)** — Records design patterns, trade-offs, and gotchas as domain knowledge.
+8. **Ship (`git-and-commit-discipline`)** — Enforces atomic commits, conventional commit messages, and reviewable PRs.
 
 ---
 
@@ -53,6 +54,9 @@ If this repository is installed as a skill/plugin, invoke `/init` to run the
 onboarding workflow. The command asks whether domain knowledge should be stored
 locally, remotely, in a custom location, or skipped for now before it creates or
 updates files.
+
+After the project grows or agent output drifts from conventions, invoke `/context`
+to audit rules files, update the project map, and pack context for the current task.
 
 ### 2. Configure Your AI Coding Tool
 
