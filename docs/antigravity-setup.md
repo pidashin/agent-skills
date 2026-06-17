@@ -78,12 +78,12 @@ At the start of every session:
 Instead of loading all skills into the prompt context at once—which consumes excessive tokens—Antigravity dynamically loads the active skill based on the current phase:
 
 ```
-spec → plan → build (source-grounded) → retro → ship (git)
+spec → plan → build (source-grounded + incremental + TDD) → retro → ship (git)
 ```
 
 - When defining requirements, the agent loads `spec-driven-development`.
 - When breaking down tasks, the agent loads `planning-and-task-breakdown`.
-- When implementing code with dependencies, the agent loads `source-grounded-development`.
+- When implementing code with dependencies, the agent loads `source-grounded-development`, `incremental-implementation`, and `test-driven-development`.
 - When development and verification are done, the agent loads `retrospective-and-knowledge-capture` to record design decisions and trade-offs.
 - When committing and preparing a PR, the agent loads `git-and-commit-discipline`.
 
@@ -99,6 +99,6 @@ The plugin registers the lifecycle slash commands directly in the Antigravity sh
 | `/context` | Context maintenance | `context-engineering` |
 | `/spec` | Spec | `spec-driven-development` |
 | `/planning` | Plan | `planning-and-task-breakdown` |
-| `/build` | Build | `source-grounded-development` |
+| `/build` | Build | `source-grounded-development`, `incremental-implementation`, `test-driven-development` |
 | `/retro` | Retro | `retrospective-and-knowledge-capture` |
 | `/ship` | Ship | `git-and-commit-discipline` |

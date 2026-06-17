@@ -16,7 +16,7 @@ These skills bolt the senior-engineer scaffolding back on. They are not referenc
 
 ## Skills
 
-8 skills organised around onboarding, context maintenance, and the development lifecycle.
+10 skills organised around onboarding, context maintenance, and the development lifecycle.
 
 ### Meta and onboarding
 | Skill | Phase | What it does |
@@ -31,6 +31,8 @@ These skills bolt the senior-engineer scaffolding back on. They are not referenc
 | [spec-driven-development](./skills/spec-driven-development/SKILL.md) | Spec | Write acceptance criteria before writing any code |
 | [planning-and-task-breakdown](./skills/planning-and-task-breakdown/SKILL.md) | Plan | Decompose the spec into atomic, verifiable tasks with explicit scope boundaries |
 | [source-grounded-development](./skills/source-grounded-development/SKILL.md) | Build | Verify every API, method, and library feature in official docs before using it |
+| [incremental-implementation](./skills/incremental-implementation/SKILL.md) | Build | Ship multi-file work in thin vertical slices; test and commit each increment |
+| [test-driven-development](./skills/test-driven-development/SKILL.md) | Build | Write failing tests first; reproduce bugs before fixing them |
 | [retrospective-and-knowledge-capture](./skills/retrospective-and-knowledge-capture/SKILL.md) | Retro | Document design patterns, rationales, and codebase gotchas |
 | [git-and-commit-discipline](./skills/git-and-commit-discipline/SKILL.md) | Ship | Atomic commits, meaningful messages, reviewable PRs |
 
@@ -48,7 +50,7 @@ the same skill workflow.
 | `/context` | Audit and refresh rules files, project map, and session context | [context-engineering](./skills/context-engineering/SKILL.md) |
 | `/spec` | Define acceptance criteria and scope before code | [spec-driven-development](./skills/spec-driven-development/SKILL.md) |
 | `/planning` | Break a confirmed spec into verifiable tasks | [planning-and-task-breakdown](./skills/planning-and-task-breakdown/SKILL.md) |
-| `/build` | Verify external APIs and dependencies before implementation | [source-grounded-development](./skills/source-grounded-development/SKILL.md) |
+| `/build` | Verify APIs, implement in slices, and prove behavior with tests | [source-grounded-development](./skills/source-grounded-development/SKILL.md), [incremental-implementation](./skills/incremental-implementation/SKILL.md), [test-driven-development](./skills/test-driven-development/SKILL.md) |
 | `/retro` | Capture design decisions and codebase gotchas | [retrospective-and-knowledge-capture](./skills/retrospective-and-knowledge-capture/SKILL.md) |
 | `/ship` | Prepare atomic commits and reviewable shipping notes | [git-and-commit-discipline](./skills/git-and-commit-discipline/SKILL.md) |
 
@@ -81,6 +83,7 @@ These skills follow the principles from Addy Osmani's agent-skills project:
 - **Verification is non-negotiable.** Every skill ends with concrete evidence requirements. "Seems right" never closes the loop.
 - **Progressive disclosure.** Load the meta-skill first; it routes to the right skill for the current phase.
 - **Scope discipline.** The most important principle: touch only what was agreed. Scope creep is not helpfulness.
+- **Incremental, test-driven build.** During implementation, verify APIs first, ship thin vertical slices, and prove each change with tests. Adapted from [addyosmani/agent-skills](https://github.com/addyosmani/agent-skills).
 
 ---
 

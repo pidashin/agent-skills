@@ -87,13 +87,15 @@ use the phase sequence to determine the order.
 | Defining what to build; writing requirements or acceptance criteria | `spec-driven-development` |
 | Breaking work into tasks; estimating scope; sequencing | `planning-and-task-breakdown` |
 | Writing code; using a library, API, or framework feature | `source-grounded-development` |
+| Implementing multi-file changes in small, verifiable slices | `incremental-implementation` |
+| Proving behavior with tests; fixing bugs with reproduction tests | `test-driven-development` |
 | Capturing design decisions, trade-offs, and learnings after development | `retrospective-and-knowledge-capture` |
 | Committing code; writing commit messages; creating PRs | `git-and-commit-discipline` |
 
 ### Phase order for project onboarding
 
 ```
-init -> spec -> plan -> build (source-grounded) -> retro -> ship (git)
+init -> spec -> plan -> build (source-grounded + incremental + TDD) -> retro -> ship (git)
 ```
 
 Run `context-engineering` anytime after init when rules drift, major features
@@ -102,19 +104,19 @@ ship, or agent output quality declines — not only at onboarding.
 ### Phase order for a new feature
 
 ```
-spec -> plan -> build (source-grounded) -> retro -> ship (git)
+spec -> plan -> build (source-grounded + incremental + TDD) -> retro -> ship (git)
 ```
 
 ### Phase order for a bug fix
 
 ```
-build (source-grounded) -> retro -> ship (git)
+build (source-grounded + incremental + TDD) -> retro -> ship (git)
 ```
 
 ### Phase order for a refactor
 
 ```
-spec (what changes, what must not change) -> plan -> build -> retro -> ship (git)
+spec (what changes, what must not change) -> plan -> build (source-grounded + incremental + TDD) -> retro -> ship (git)
 ```
 
 ---

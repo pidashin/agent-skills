@@ -1,10 +1,12 @@
 ---
-description: Build with source-grounded verification before using dependencies
+description: Build with verified APIs, incremental slices, and test-driven proof
 ---
 
-Invoke the agent-skills:source-grounded-development skill.
+Invoke the agent-skills:source-grounded-development,
+agent-skills:incremental-implementation, and agent-skills:test-driven-development
+skills.
 
-Identify every external API, library method, framework feature, or integration
-that needs verification. Confirm each against official documentation before
-writing code, flag anything unverified, then implement only within the agreed
-scope.
+Before writing code, verify every external API, library method, framework
+feature, or integration against official documentation. Then implement in thin
+vertical slices: write failing tests first, make each slice pass, verify, and
+commit before moving to the next slice. Stay within the agreed scope.
