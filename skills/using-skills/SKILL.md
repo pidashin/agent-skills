@@ -104,6 +104,9 @@ Task arrives — what is the current step?
     │   ├── Uses external API, library, or framework feature? → source-grounded-development
     │   ├── Touches multiple files or feels too big for one pass? → incremental-implementation
     │   └── Changes logic or behaviour (incl. bug fixes)? ─────→ test-driven-development
+    ├── Implementation done, review before merge?
+    │   ├── Assessing quality across multiple axes? ───────────→ code-review-and-quality
+    │   └── Simplifying for clarity without changing behaviour? → code-simplification
     ├── Work done, capture decisions and gotchas? ─────────────→ retrospective-and-knowledge-capture
     └── Committing, messaging, or opening a PR? ───────────────→ git-and-commit-discipline
 ```
@@ -118,6 +121,15 @@ Task arrives — what is the current step?
 
 A typical feature slice may use all three **in sequence** (verify APIs → pick a slice → write failing test → implement). That is still one skill at a time per micro-step, not three skills loaded together.
 
+**Review step — load only what matches:**
+
+| Trigger | Load | Skip when |
+|---------|------|-----------|
+| Before merge or PR submission | `code-review-and-quality` | Trivial docs-only or config-only change with no review value |
+| Readability or complexity issues flagged | `code-simplification` | Code already clean; behaviour not yet verified |
+
+Run `code-review-and-quality` first. Load `code-simplification` only when review findings call for clarity work — not as a default second pass.
+
 `context-engineering` is not part of every feature. Run it when rules drift, the project map is stale, or agent output ignores conventions — not at the start of every task.
 
 ---
@@ -129,7 +141,7 @@ These are **common sequences**, not mandatory checklists. Skip any phase that do
 ### Project onboarding
 
 ```
-init → spec → plan → build* → retro → ship
+init → spec → plan → build* → review* → retro → ship
 ```
 
 Run `context-engineering` later when the codebase or conventions drift — not on every onboarding step.
@@ -137,13 +149,13 @@ Run `context-engineering` later when the codebase or conventions drift — not o
 ### New feature
 
 ```
-spec → plan → build* → retro → ship
+spec → plan → build* → review* → retro → ship
 ```
 
 ### Bug fix
 
 ```
-test-driven-development → build* (as needed) → retro → ship
+test-driven-development → build* (as needed) → review* → retro → ship
 ```
 
 Start with a reproduction test. Add `source-grounded-development` only if the fix involves an external API. Add `incremental-implementation` only if the fix spans multiple files.
@@ -151,7 +163,7 @@ Start with a reproduction test. Add `source-grounded-development` only if the fi
 ### Refactor
 
 ```
-spec (what changes, what must not) → plan → build* → retro → ship
+spec (what changes, what must not) → plan → build* → review* → retro → ship
 ```
 
 ### Docs or config only
@@ -161,6 +173,8 @@ spec (what changes, what must not) → plan → build* → retro → ship
 ```
 
 `*build` = load `source-grounded-development`, `incremental-implementation`, and/or `test-driven-development` **only when their triggers match** the current slice. Not all three by default.
+
+`*review` = load `code-review-and-quality` before merge; add `code-simplification` only when review findings require clarity work.
 
 ---
 
@@ -176,6 +190,8 @@ spec (what changes, what must not) → plan → build* → retro → ship
 | Build | `source-grounded-development` | Code uses external APIs, libraries, or frameworks |
 | Build | `incremental-implementation` | Multi-file change or large implementation |
 | Build | `test-driven-development` | Logic, behaviour, or bug-fix work |
+| Review | `code-review-and-quality` | Before merge; multi-axis quality assessment |
+| Review | `code-simplification` | Readability or complexity issues flagged during review |
 | Retro | `retrospective-and-knowledge-capture` | Decisions or gotchas worth preserving |
 | Ship | `git-and-commit-discipline` | Committing or opening a PR |
 

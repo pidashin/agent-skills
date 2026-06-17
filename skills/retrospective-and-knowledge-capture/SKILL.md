@@ -18,6 +18,7 @@ This skill ensures that key decisions, patterns, trade-offs, and gotchas are cap
 ## When This Skill Activates
 
 - Implementation is complete and verification checks have passed.
+- Review is complete (or skipped for trivial changes).
 - You are about to enter the ship phase (`git-and-commit-discipline`).
 - Tricky bugs, non-obvious design choices, or new patterns were introduced or resolved.
 

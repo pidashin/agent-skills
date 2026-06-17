@@ -44,5 +44,7 @@ Load **one skill at a time** for the current step — do not preload the full li
 | Writing code with external dependencies | [source-grounded-development](./skills/source-grounded-development/SKILL.md) |
 | Implementing in small, verifiable slices | [incremental-implementation](./skills/incremental-implementation/SKILL.md) |
 | Proving behavior with tests | [test-driven-development](./skills/test-driven-development/SKILL.md) |
+| Reviewing code before merge | [code-review-and-quality](./skills/code-review-and-quality/SKILL.md) |
+| Simplifying code for clarity | [code-simplification](./skills/code-simplification/SKILL.md) |
 | Capturing design decisions and retrospecting | [retrospective-and-knowledge-capture](./skills/retrospective-and-knowledge-capture/SKILL.md) |
 | Committing or opening a PR | [git-and-commit-discipline](./skills/git-and-commit-discipline/SKILL.md) |

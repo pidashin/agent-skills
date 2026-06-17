@@ -16,7 +16,7 @@ These skills bolt the senior-engineer scaffolding back on. They are not referenc
 
 ## Skills
 
-10 skills organised around onboarding, context maintenance, and the development lifecycle.
+12 skills organised around onboarding, context maintenance, and the development lifecycle.
 
 ### Meta and onboarding
 | Skill | Phase | What it does |
@@ -33,6 +33,8 @@ These skills bolt the senior-engineer scaffolding back on. They are not referenc
 | [source-grounded-development](./skills/source-grounded-development/SKILL.md) | Build | Verify every API, method, and library feature in official docs before using it |
 | [incremental-implementation](./skills/incremental-implementation/SKILL.md) | Build | Ship multi-file work in thin vertical slices; test and commit each increment |
 | [test-driven-development](./skills/test-driven-development/SKILL.md) | Build | Write failing tests first; reproduce bugs before fixing them |
+| [code-review-and-quality](./skills/code-review-and-quality/SKILL.md) | Review | Multi-axis review across correctness, readability, architecture, security, and performance |
+| [code-simplification](./skills/code-simplification/SKILL.md) | Review | Reduce complexity while preserving exact behaviour |
 | [retrospective-and-knowledge-capture](./skills/retrospective-and-knowledge-capture/SKILL.md) | Retro | Document design patterns, rationales, and codebase gotchas |
 | [git-and-commit-discipline](./skills/git-and-commit-discipline/SKILL.md) | Ship | Atomic commits, meaningful messages, reviewable PRs |
 
@@ -51,6 +53,7 @@ the same skill workflow.
 | `/spec` | Define acceptance criteria and scope before code | [spec-driven-development](./skills/spec-driven-development/SKILL.md) |
 | `/planning` | Break a confirmed spec into verifiable tasks | [planning-and-task-breakdown](./skills/planning-and-task-breakdown/SKILL.md) |
 | `/build` | Implement the current slice; load build skills only when their triggers match | See [using-skills](./skills/using-skills/SKILL.md) |
+| `/review` | Review the change before merge; load review skills only when their triggers match | See [using-skills](./skills/using-skills/SKILL.md) |
 | `/retro` | Capture design decisions and codebase gotchas | [retrospective-and-knowledge-capture](./skills/retrospective-and-knowledge-capture/SKILL.md) |
 | `/ship` | Prepare atomic commits and reviewable shipping notes | [git-and-commit-discipline](./skills/git-and-commit-discipline/SKILL.md) |
 

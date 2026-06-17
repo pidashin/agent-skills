@@ -78,14 +78,17 @@ At the start of every session:
 Instead of loading all skills into the prompt context at once—which consumes excessive tokens—Antigravity dynamically loads the active skill based on the current phase:
 
 ```
-spec → plan → build* → retro → ship (git)
+spec → plan → build* → review* → retro → ship (git)
 ```
 
 `*build` = load `source-grounded-development`, `incremental-implementation`, and/or `test-driven-development` only when their triggers match the current slice — not all three by default.
 
+`*review` = load `code-review-and-quality` before merge; add `code-simplification` only when review findings require clarity work.
+
 - When defining requirements, the agent loads `spec-driven-development`.
 - When breaking down tasks, the agent loads `planning-and-task-breakdown`.
 - When implementing code, the agent loads only the build skill(s) whose triggers match (external APIs → `source-grounded-development`; multi-file → `incremental-implementation`; logic/behaviour → `test-driven-development`).
+- When implementation is done, the agent loads `code-review-and-quality` before merge; `code-simplification` only if review findings require it.
 - When development and verification are done, the agent loads `retrospective-and-knowledge-capture` to record design decisions and trade-offs.
 - When committing and preparing a PR, the agent loads `git-and-commit-discipline`.
 
@@ -102,5 +105,6 @@ The plugin registers the lifecycle slash commands directly in the Antigravity sh
 | `/spec` | Spec | `spec-driven-development` |
 | `/planning` | Plan | `planning-and-task-breakdown` |
 | `/build` | Build | Build skills as triggered (see `using-skills`) |
+| `/review` | Review | Review skills as triggered (see `using-skills`) |
 | `/retro` | Retro | `retrospective-and-knowledge-capture` |
 | `/ship` | Ship | `git-and-commit-discipline` |
